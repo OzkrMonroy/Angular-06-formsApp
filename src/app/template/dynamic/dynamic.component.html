@@ -1,1 +1,84 @@
-<p>dynamic works!</p>
+<h2>Template: <small>Dynamic</small></h2>
+<hr />
+
+<form (ngSubmit)="save()" autocomplete="false" #myForm="ngForm">
+  <!-- Name -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Name</label>
+    <div class="col-sm-9">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Person name"
+        name="name"
+        ngModel
+        required
+      />
+      <span
+        class="form-text text-danger"
+        *ngIf="
+          myForm.controls['name']?.errors && myForm.controls['name']?.touched
+        "
+        >Enter a value</span
+      >
+    </div>
+  </div>
+
+  <!-- Add favorite game-->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Favorite game</label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Plants vs. Zombies"
+          name="game"
+          [(ngModel)]='game'
+          (keyup.enter)="addFavorite()"
+        />
+        <button class="btn btn-outline-primary" type="button" (click)="addFavorite()">Add</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Favorite list -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Favorites</label>
+    <div class="col-sm-9">
+      <div
+        class="input-group mb-2"
+        *ngFor="let favorite of person.favorites; let i = index"
+      >
+        <input
+          type="text"
+          class="form-control"
+          name="favorite_{{ i }}"
+          [(ngModel)]="favorite.name"
+          required
+        />
+        <button
+          class="btn btn-outline-danger"
+          type="button"
+          (click)="removeFavorite(i)"
+        >
+          Remove
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 d-flex justify-content-end">
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="save()"
+        [disabled]="myForm.invalid"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</form>
+
+<pre>{{ person | json }}</pre>
