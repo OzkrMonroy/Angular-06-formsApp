@@ -1,1 +1,86 @@
-<p>switches works!</p>
+<h2>Reactive: <small>switches</small></h2>
+<hr />
+
+<form>
+  <!-- RadioButtons -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Genre</label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="radioGenre"
+          id="maleRadio"
+          value='M'
+        />
+        <label class="form-check-label" for="maleRadio"> Male </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="radioGenre"
+          id="femaleRadio"
+          value='F'
+        />
+        <label class="form-check-label" for="femaleRadio"> Female </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Switches -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Notifications</label>
+    <div class="col-sm-9">
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="flexSwitchCheckChecked"
+        />
+        <label class="form-check-label" for="flexSwitchCheckChecked"
+          >I want to receive notifications</label
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkbox -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="flexCheckChecked"
+          name='termsAndConditions'
+        />
+        <label class="form-check-label" for="flexCheckChecked">
+          Terms and conditions
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 d-flex justify-content-end">
+      <button
+        class="btn btn-primary"
+        type="submit">Submit</button>
+    </div>
+  </div>
+</form>
+
+<!-- <h5>Form values:</h5>
+<pre>{{ myForm.value | json }}</pre>
+<h5>Person values:</h5>
+<pre>{{ person | json }}</pre>
+<h5>Valid:</h5>
+<pre>{{ myForm.valid }}</pre>
+<h5>Conditions:</h5>
+<pre>{{ myForm.valid }}</pre>
+<h5>Terms errors:</h5>
+<pre>{{ myForm.controls['termsAndConditions']?.errors | json }}</pre> -->

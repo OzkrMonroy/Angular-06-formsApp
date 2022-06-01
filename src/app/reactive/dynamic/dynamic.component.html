@@ -1,1 +1,76 @@
-<p>dynamic works!</p>
+<h2>Reactive: <small>Dynamic</small></h2>
+<hr />
+
+<form>
+  <!-- Name -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Name</label>
+    <div class="col-sm-9">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Person name"
+        name="name"
+        ngModel
+        required
+      />
+      <span
+        class="form-text text-danger"
+        >Enter a value</span
+      >
+    </div>
+  </div>
+
+  <!-- Add favorite game-->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Favorite game</label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Plants vs. Zombies"
+          name="game"
+          (keyup.enter)="1"
+        />
+        <button class="btn btn-outline-primary" type="button" (click)="1">Add</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Favorite list -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Favorites</label>
+    <div class="col-sm-9">
+      <!-- <div
+        class="input-group mb-2"
+      >
+        <input
+          type="text"
+          class="form-control"
+          required
+        />
+        <button
+          class="btn btn-outline-danger"
+          type="button"
+          (click)="1"
+        >
+          Remove
+        </button>
+      </div> -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 d-flex justify-content-end">
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="1"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</form>
+
+<!-- <pre>{{ person | json }}</pre> -->

@@ -1,1 +1,82 @@
-<p>basics works!</p>
+<h2>Reactive: Basics</h2>
+<hr />
+<div class="row">
+  <div class="col">
+    <form [formGroup]="myForm" (ngSubmit)="save()">
+      <!-- product -->
+      <div class="mb-3 row">
+        <label for="product" class="col-sm-3 col-form-label">Product</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Product name"
+            formControlName="product"
+          />
+          <span class="form-text text-danger" *ngIf="inputIsValid('product')"
+            >Enter minium 3 characters</span
+          >
+        </div>
+      </div>
+      <!-- price -->
+      <div class="mb-3 row">
+        <label for="price" class="col-sm-3 col-form-label">Price</label>
+        <div class="col-sm-9">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Product price"
+            formControlName="price"
+          />
+          <span class="form-text text-danger" *ngIf="inputIsValid('price')"
+            >The price must be major than 0</span
+          >
+        </div>
+      </div>
+      <!-- stock -->
+      <div class="mb-3 row">
+        <label for="stock" class="col-sm-3 col-form-label">Stock</label>
+        <div class="col-sm-9">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Product stock"
+            formControlName="stock"
+          />
+          <span class="form-text text-danger" *ngIf="inputIsValid('stock')"
+            >The stock must be 0 or major</span
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col d-flex justify-content-end">
+          <button
+            class="btn btn-primary"
+            type="submit"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <h5>Valid:</h5>
+    <pre>{{ myForm.valid }}</pre>
+  </div>
+  <div class="col">
+    <h5>Pristine:</h5>
+    <pre>{{ myForm.pristine }}</pre>
+  </div>
+  <div class="col">
+    <h5>Touched:</h5>
+    <pre>{{ myForm.touched }}</pre>
+  </div>
+  <div class="col">
+    <h5>Value:</h5>
+    <pre>{{ myForm.value | json }}</pre>
+  </div>
+</div>
