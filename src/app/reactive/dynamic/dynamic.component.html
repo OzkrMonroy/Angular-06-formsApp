@@ -1,7 +1,7 @@
 <h2>Reactive: <small>Dynamic</small></h2>
 <hr />
 
-<form>
+<form [formGroup]="myForm" autocomplete='off'>
   <!-- Name -->
   <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Name</label>
@@ -10,12 +10,9 @@
         type="text"
         class="form-control"
         placeholder="Person name"
-        name="name"
-        ngModel
-        required
+        formControlName="name"
       />
-      <span
-        class="form-text text-danger"
+      <span class="form-text text-danger" *ngIf="inputIsValid('name')"
         >Enter a value</span
       >
     </div>
@@ -30,10 +27,12 @@
           type="text"
           class="form-control"
           placeholder="Plants vs. Zombies"
-          name="game"
-          (keyup.enter)="1"
+          (keyup.enter)="addFavorite()"
+          [formControl]='newFavorite'
         />
-        <button class="btn btn-outline-primary" type="button" (click)="1">Add</button>
+        <button class="btn btn-outline-primary" type="button" (click)="addFavorite()">
+          Add
+        </button>
       </div>
     </div>
   </div>
@@ -41,36 +40,35 @@
   <!-- Favorite list -->
   <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Favorites</label>
-    <div class="col-sm-9">
-      <!-- <div
+    <div class="col-sm-9" formArrayName='favorites'>
+      <div
         class="input-group mb-2"
+        *ngFor="let favorite of favorites.controls; let i = index"
       >
         <input
           type="text"
           class="form-control"
-          required
+          [formControlName]="i"
         />
         <button
           class="btn btn-outline-danger"
           type="button"
-          (click)="1"
+          (click)="deleteFavorite(i)"
         >
           Remove
         </button>
-      </div> -->
+      </div>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-12 d-flex justify-content-end">
-      <button
-        class="btn btn-primary"
-        type="button"
-        (click)="1"
-      >
-        Save
-      </button>
+      <button class="btn btn-primary" type="button" (click)="save()">Save</button>
     </div>
   </div>
 </form>
 
-<!-- <pre>{{ person | json }}</pre> -->
+<h4>Valid</h4>
+<pre>{{ myForm.valid }}</pre>
+<br>
+<h4>Values</h4>
+<pre>{{ myForm.value | json }}</pre>
