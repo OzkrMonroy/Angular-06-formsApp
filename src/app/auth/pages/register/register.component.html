@@ -1,7 +1,7 @@
 <h2>Reactive validations</h2>
 <hr />
 
-<form autocomplete='off' [formGroup]="myForm">
+<form autocomplete="off" [formGroup]="myForm">
   <!-- Name -->
   <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Name</label>
@@ -17,7 +17,7 @@
       >
     </div>
   </div>
-  
+
   <!-- Email -->
   <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Email</label>
@@ -26,31 +26,27 @@
         type="email"
         class="form-control"
         placeholder="Email"
+        formControlName="email"
       />
+      <span class="form-text text-danger" *ngIf="inputIsValid('email')"
+        >Email is required</span
+      >
     </div>
   </div>
-  
+
   <!-- User Name -->
   <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">User Name</label>
     <div class="col-sm-9">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="User Name"
-      />
+      <input type="text" class="form-control" placeholder="User Name" />
     </div>
   </div>
-  
+
   <!-- Password -->
   <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Password</label>
     <div class="col-sm-9">
-      <input
-        type="password"
-        class="form-control"
-        placeholder="Password"
-      />
+      <input type="password" class="form-control" placeholder="Password" />
     </div>
   </div>
 
@@ -68,17 +64,21 @@
 
   <div class="row">
     <div class="col-sm-12 d-flex justify-content-end">
-      <button class="btn btn-primary" type="button" (click)="submit()">Register</button>
+      <button class="btn btn-primary" type="button" (click)="submit()">
+        Register
+      </button>
     </div>
   </div>
 </form>
 
 <h4>Valid</h4>
 <pre>{{ myForm.valid }}</pre>
-<br>
+<br />
 <h4>Name errors</h4>
-<pre>{{ myForm.controls['name'].errors | json }}</pre>
-<br>
+<pre>{{ myForm.controls["name"].errors | json }}</pre>
+<br />
+<h4>Email errors</h4>
+<pre>{{ myForm.controls["email"].errors | json }}</pre>
+<br />
 <h4>Values</h4>
 <pre>{{ myForm.value | json }}</pre>
-
