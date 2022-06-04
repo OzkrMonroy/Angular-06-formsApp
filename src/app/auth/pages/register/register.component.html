@@ -1,7 +1,7 @@
 <h2>Reactive validations</h2>
 <hr />
 
-<form autocomplete='off'>
+<form autocomplete='off' [formGroup]="myForm">
   <!-- Name -->
   <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Name</label>
@@ -10,10 +10,11 @@
         type="text"
         class="form-control"
         placeholder="Full name"
+        formControlName="name"
       />
-      <!-- <span class="form-text text-danger" *ngIf="inputIsValid('name')"
+      <span class="form-text text-danger" *ngIf="inputIsValid('name')"
         >Must have first and last name format</span
-      > -->
+      >
     </div>
   </div>
   
@@ -67,14 +68,17 @@
 
   <div class="row">
     <div class="col-sm-12 d-flex justify-content-end">
-      <button class="btn btn-primary" type="button">Register</button>
+      <button class="btn btn-primary" type="button" (click)="submit()">Register</button>
     </div>
   </div>
 </form>
 
-<!-- <h4>Valid</h4>
+<h4>Valid</h4>
 <pre>{{ myForm.valid }}</pre>
 <br>
+<h4>Name errors</h4>
+<pre>{{ myForm.controls['name'].errors | json }}</pre>
+<br>
 <h4>Values</h4>
-<pre>{{ myForm.value | json }}</pre> -->
+<pre>{{ myForm.value | json }}</pre>
 
