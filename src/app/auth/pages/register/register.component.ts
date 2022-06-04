@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-switches',
-  templateUrl: './switches.component.html',
+  selector: 'app-register',
+  templateUrl: './register.component.html',
   styles: [
   ]
 })
-export class SwitchesComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 
   constructor() { }
 

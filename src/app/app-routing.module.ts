@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import(/*webpackChunkName: "Reactive"*/'./reactive/reactive.module').then(m => m.ReactiveModule)
   },
   {
+    path: 'auth',
+    loadChildren: () => import(/*webpackChunkName: "Auth" */'./auth/auth.module').then(m => m.AuthModule)
+  },
+  {
     path: '**', redirectTo: 'template'
   }
 ];
