@@ -38,7 +38,12 @@
   <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">User Name</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" placeholder="User Name" formControlName="username"/>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="User Name"
+        formControlName="username"
+      />
       <span class="form-text text-danger" *ngIf="inputIsValid('username')"
         >Username is required</span
       >
@@ -49,7 +54,15 @@
   <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Password</label>
     <div class="col-sm-9">
-      <input type="password" class="form-control" placeholder="Password" />
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <span class="form-text text-danger" *ngIf="inputIsValid('password')"
+        >The password must have more 6 characters</span
+      >
     </div>
   </div>
 
@@ -61,7 +74,11 @@
         type="password"
         class="form-control"
         placeholder="Confirm password"
+        formControlName="confirm_password"
       />
+      <span class="form-text text-danger" *ngIf="inputIsValid('confirm_password')"
+        >Passwords must be equals</span
+      >
     </div>
   </div>
 
@@ -76,6 +93,8 @@
 
 <h4>Valid</h4>
 <pre>{{ myForm.valid }}</pre>
+<h4>Form Errors</h4>
+<pre>{{ myForm.errors | json }}</pre>
 <br />
 <h4>Name errors</h4>
 <pre>{{ myForm.controls["name"].errors | json }}</pre>
@@ -85,6 +104,12 @@
 <br />
 <h4>Username errors</h4>
 <pre>{{ myForm.controls["username"].errors | json }}</pre>
+<br />
+<h4>Password errors</h4>
+<pre>{{ myForm.controls["password"].errors | json }}</pre>
+<br />
+<h4>Confirm Password errors</h4>
+<pre>{{ myForm.controls["confirm_password"].errors | json }}</pre>
 <br />
 <!-- <h4>Values</h4>
 <pre>{{ myForm.value | json }}</pre> -->
