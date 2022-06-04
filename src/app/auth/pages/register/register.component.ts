@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { emailPattern, namePattern, verifyUserName } from 'src/app/shared/validators/validations';
+import { ValidatorsService } from 'src/app/shared/validators/validators.service';
 
 @Component({
   selector: 'app-register',
@@ -8,15 +10,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   ]
 })
 export class RegisterComponent implements OnInit {
-  namePattern: string = '([a-zA-Z]+) ([a-zA-Z]+)';
-  emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
-
   myForm: FormGroup = this.formBuilder.group({
-    name: ['', [ Validators.required, Validators.pattern(this.namePattern) ]],
-    email: ['', [ Validators.required, Validators.pattern(this.emailPattern) ]]
+    name: ['', [ Validators.required, Validators.pattern(this.validatorsService.namePattern) ]],
+    email: ['', [ Validators.required, Validators.pattern(this.validatorsService.emailPattern) ]],
+    username: ['', [Validators.required, this.validatorsService.verifyUserName]]
   })
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private validatorsService: ValidatorsService) { }
 
   ngOnInit(): void {
   }
