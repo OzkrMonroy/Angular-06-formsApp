@@ -29,7 +29,7 @@
         formControlName="email"
       />
       <span class="form-text text-danger" *ngIf="inputIsValid('email')"
-        >Email is required</span
+        >{{ emailMsg }}</span
       >
     </div>
   </div>
@@ -84,15 +84,17 @@
 
   <div class="row">
     <div class="col-sm-12 d-flex justify-content-end">
-      <button class="btn btn-primary" type="button" (click)="submit()">
+      <button class="btn btn-primary" type="button" (click)="submit()" [disabled]="myForm.pending">
         Register
       </button>
     </div>
   </div>
 </form>
 
-<h4>Valid</h4>
+<h4>Form valid</h4>
 <pre>{{ myForm.valid }}</pre>
+<h4>Form status</h4>
+<pre>{{ myForm.status }}</pre>
 <h4>Form Errors</h4>
 <pre>{{ myForm.errors | json }}</pre>
 <br />

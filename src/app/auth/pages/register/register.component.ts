@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EmailValidatorService } from 'src/app/shared/validators/email-validator.service';
 // import { emailPattern, namePattern, verifyUserName } from 'src/app/shared/validators/validations';
 import { ValidatorsService } from 'src/app/shared/validators/validators.service';
 
@@ -12,7 +13,7 @@ import { ValidatorsService } from 'src/app/shared/validators/validators.service'
 export class RegisterComponent implements OnInit {
   myForm: FormGroup = this.formBuilder.group({
     name: ['', [ Validators.required, Validators.pattern(this.validatorsService.namePattern) ]],
-    email: ['', [ Validators.required, Validators.pattern(this.validatorsService.emailPattern) ]],
+    email: ['', [ Validators.required, Validators.pattern(this.validatorsService.emailPattern) ], [this.emailValidator]],
     username: ['', [Validators.required, this.validatorsService.verifyUserName]],
     password: ['', [Validators.required, Validators.minLength(6)]],
     confirm_password: ['', [Validators.required, Validators.minLength(6)]],
@@ -20,9 +21,24 @@ export class RegisterComponent implements OnInit {
     validators: [this.validatorsService.hasTheSameValue('password', 'confirm_password')]
   })
 
-  constructor(private formBuilder: FormBuilder, private validatorsService: ValidatorsService) { }
+  constructor(private formBuilder: FormBuilder, private validatorsService: ValidatorsService, private emailValidator: EmailValidatorService) { }
 
   ngOnInit(): void {
+  }
+
+  get emailMsg(): string {
+    const errors = this.myForm.get('email')?.errors;
+
+    if(errors?.['required']){
+      return 'Email is required';
+    }
+    if(errors?.['pattern']){
+      return 'Enter an email valid';
+    }
+    if(errors?.['alreadyExists']){
+      return 'Email already exists';
+    }
+    return ''
   }
 
   inputIsValid(input: string): boolean {
