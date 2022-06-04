@@ -1,1 +1,80 @@
-<p>register works!</p>
+<h2>Reactive validations</h2>
+<hr />
+
+<form autocomplete='off'>
+  <!-- Name -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Name</label>
+    <div class="col-sm-9">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Full name"
+      />
+      <!-- <span class="form-text text-danger" *ngIf="inputIsValid('name')"
+        >Must have first and last name format</span
+      > -->
+    </div>
+  </div>
+  
+  <!-- Email -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Email</label>
+    <div class="col-sm-9">
+      <input
+        type="email"
+        class="form-control"
+        placeholder="Email"
+      />
+    </div>
+  </div>
+  
+  <!-- User Name -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">User Name</label>
+    <div class="col-sm-9">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="User Name"
+      />
+    </div>
+  </div>
+  
+  <!-- Password -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Password</label>
+    <div class="col-sm-9">
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Password"
+      />
+    </div>
+  </div>
+
+  <!-- Confirm password -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Confirm password</label>
+    <div class="col-sm-9">
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Confirm password"
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 d-flex justify-content-end">
+      <button class="btn btn-primary" type="button">Register</button>
+    </div>
+  </div>
+</form>
+
+<!-- <h4>Valid</h4>
+<pre>{{ myForm.valid }}</pre>
+<br>
+<h4>Values</h4>
+<pre>{{ myForm.value | json }}</pre> -->
+
